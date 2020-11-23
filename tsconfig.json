@@ -1,8 +1,11 @@
 {
-  "include": ["src/index.ts"],
+  "include": ["src/**/*"],
   "compilerOptions": {
     "strict": true,
     "target": "es2015",
-    "sourceMap": true
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "react"
   }
 }
