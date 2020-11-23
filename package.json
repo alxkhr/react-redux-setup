@@ -1,0 +1,14 @@
+{
+  "name": "learning-a12-tech",
+  "version": "1.0.0",
+  "description": "Learning the tech-stack of A12 BAP-Client",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Kehr",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "eslint": "^7.14.0"
+  }
+}
