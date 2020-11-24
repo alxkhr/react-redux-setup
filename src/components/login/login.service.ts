@@ -8,4 +8,8 @@ export namespace LoginService {
   export function login(username: string) {
     localStorage.setItem(USER_KEY, username);
   }
+
+  export function logout() {
+    localStorage.removeItem(USER_KEY);
+  }
 }
