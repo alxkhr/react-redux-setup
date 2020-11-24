@@ -1,5 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export function Note(props: { text: string }) {
+export const Note = memo(function (props: { text: string }) {
   return <li>{props.text}</li>;
-}
+});
