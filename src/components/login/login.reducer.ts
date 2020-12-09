@@ -1,7 +1,7 @@
 import { AnyAction } from 'typescript-fsa';
 
 import { LoginAction } from './login.actions';
-import { LoginPersistenceService } from './login.service';
+import { LoginPersistenceService } from './persistence.service';
 
 export interface LoginState {
   loggedInUser: string | null;
@@ -15,10 +15,10 @@ export function loginReducer(
   state: Readonly<LoginState> = initialState,
   action: AnyAction,
 ): LoginState {
-  if (LoginAction.login.match(action)) {
+  if (LoginAction.loggedIn.match(action)) {
     return { ...state, loggedInUser: action.payload.user };
   }
-  if (LoginAction.logout.match(action)) {
+  if (LoginAction.loggedOut.match(action)) {
     return { ...state, loggedInUser: null };
   }
   return state;

@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Module } from '../app/app';
+import { AppState } from '../app/app.reducer';
 import { LoginAction } from '../login/login.actions';
 
 export function NavigationBar(props: {
@@ -9,6 +10,7 @@ export function NavigationBar(props: {
   setActiveModule: (module: Module) => void;
 }) {
   const dispatch = useDispatch();
+  const user = useSelector((state: AppState) => state.login.loggedInUser);
   return (
     <div>
       {props.modules.map((module) => (
@@ -21,9 +23,10 @@ export function NavigationBar(props: {
           {module}
         </button>
       ))}
+      Hello, {user}
       <button
         onClick={() => {
-          dispatch(LoginAction.logout({}));
+          dispatch(LoginAction.requestLogout({}));
         }}
       >
         logout
