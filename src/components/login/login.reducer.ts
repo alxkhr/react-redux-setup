@@ -1,13 +1,14 @@
 import { AnyAction } from 'typescript-fsa';
 
 import { LoginAction } from './login.actions';
+import { LoginPersistenceService } from './login.service';
 
 export interface LoginState {
   loggedInUser: string | null;
 }
 
 const initialState: LoginState = {
-  loggedInUser: null,
+  loggedInUser: LoginPersistenceService.getUser(),
 };
 
 export function loginReducer(

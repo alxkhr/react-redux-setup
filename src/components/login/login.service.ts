@@ -1,8 +1,8 @@
 const USER_KEY = 'user';
 
-export namespace LoginService {
-  export function isLoggedIn(): boolean {
-    return localStorage.getItem(USER_KEY) !== null;
+export namespace LoginPersistenceService {
+  export function getUser() {
+    return localStorage.getItem(USER_KEY);
   }
 
   export function login(username: string) {
