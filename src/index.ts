@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import { render } from 'react-dom';
 
-import { App } from './components/app';
+import { AppContainer } from './components/app/container';
 
-render(createElement(App), document.getElementById('react'));
+render(createElement(AppContainer), document.getElementById('react'));

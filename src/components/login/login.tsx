@@ -1,17 +1,24 @@
 import React, { ChangeEvent, Component } from 'react';
+import { connect } from 'react-redux';
 
-import { LoginService } from './login.service';
+import { LoginAction } from './login.actions';
 
-interface LoginProps {
-  onLogin: () => void;
+interface DispatchProps {
+  login: (user: string) => void;
 }
 
-interface LoginState {
+interface StateProps {}
+
+interface OwnProps {}
+
+type ComponentProps = DispatchProps & StateProps & OwnProps;
+
+interface ComponentState {
   username: string;
 }
 
-export class Login extends Component<LoginProps, LoginState> {
-  constructor(props: LoginProps) {
+class LoginComponent extends Component<ComponentProps, ComponentState> {
+  constructor(props: ComponentProps) {
     super(props);
     this.state = { username: '' };
     this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -23,8 +30,7 @@ export class Login extends Component<LoginProps, LoginState> {
   }
 
   onLogin() {
-    LoginService.login(this.state.username);
-    this.props.onLogin();
+    this.props.login(this.state.username);
   }
 
   render() {
@@ -40,3 +46,7 @@ export class Login extends Component<LoginProps, LoginState> {
     );
   }
 }
+
+export const Login = connect<StateProps, DispatchProps, OwnProps>(null, {
+  login: LoginAction.login,
+})(LoginComponent);
