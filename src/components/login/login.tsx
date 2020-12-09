@@ -48,5 +48,5 @@ class LoginComponent extends Component<ComponentProps, ComponentState> {
 }
 
 export const Login = connect<StateProps, DispatchProps, OwnProps>(null, {
-  login: LoginAction.login,
+  login: (username: string) => LoginAction.login({ user: username }),
 })(LoginComponent);

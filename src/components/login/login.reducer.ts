@@ -1,3 +1,5 @@
+import { AnyAction } from 'typescript-fsa';
+
 import { LoginAction } from './login.actions';
 
 export interface LoginState {
@@ -10,14 +12,13 @@ const initialState: LoginState = {
 
 export function loginReducer(
   state: Readonly<LoginState> = initialState,
-  action: LoginAction.AnyAction,
+  action: AnyAction,
 ): LoginState {
-  switch (action.type) {
-    case LoginAction.Type.LOGIN:
-      return { ...state, loggedInUser: action.payload.user };
-    case LoginAction.Type.LOGOUT:
-      return { ...state, loggedInUser: null };
-    default:
-      return state;
+  if (LoginAction.login.match(action)) {
+    return { ...state, loggedInUser: action.payload.user };
   }
+  if (LoginAction.logout.match(action)) {
+    return { ...state, loggedInUser: null };
+  }
+  return state;
 }

@@ -23,7 +23,7 @@ export function NavigationBar(props: {
       ))}
       <button
         onClick={() => {
-          dispatch(LoginAction.logout());
+          dispatch(LoginAction.logout({}));
         }}
       >
         logout
